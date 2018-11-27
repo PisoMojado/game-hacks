@@ -1,0 +1,31 @@
+I succeeded using the guide by kbiz0r here: https://steamcommunity.com/app/200900/discussions/0/353916584658390430/ at #8
+In case it gets lost:
+"""
+Thought I'd share what I did to get Cave Story+ working on Sierra.
+
+I had a hunch that it was a similar SDL version issue to SpaceChem, so I basically did the SDL.framework replacement that this tool does for SpaceChem: https://github.com/leafi/fix-spacechem-os-x
+
+You still have to do the data folder trick, so all together the process via Terminal is:
+
+1. `sudo ln -s ~/Library/Application\ Support/Steam/steamapps/common/Cave\ Story+/data /Volumes/Macintosh\ HD/data`
+
+(Or copy if you prefer.)
+
+2. `curl -LO https://github.com/leafi/fix-spacechem-os-x/raw/master/bonsai.tar.bz2`
+
+(Or just get SDL.framework version 1.2.14 somewhere else.)
+
+3. `open bonsai.tar.bz2`
+
+(Ignore the Finder window this opens and continue in Terminal.)
+
+4. `rm -rf ~/Library/Application\ Support/Steam/steamapps/common/Cave\ Story+/Cave\ Story+.app/Contents/Frameworks/SDL.framework`
+
+(Make a backup first if you're paranoid.)
+
+5. `cp -r bonsai/Frameworks/SDL.framework ~/Library/Application\ Support/Steam/steamapps/common/Cave\ Story+/Cave\ Story+.app/Contents/Frameworks/SDL.framework`
+
+And you should be good to go!
+"""
+In case it does not last, I have cloned the repo: https://github.com/PisoMojado/fix-spacechem-os-x
+You can pull bonsai.tar.bz2 from this repo, as a backup.
